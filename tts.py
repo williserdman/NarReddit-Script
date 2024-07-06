@@ -4,11 +4,11 @@ import os
 
 class TTS:
     def __init__(self, env):
-        self.env = env
         set_api_key(env['ELEVENLABS_API_KEY'])
         self.voices = voices()
         self.Paola = self.findVoice(self.voices, "Paola")
         self.Arthur = self.findVoice(self.voices, "Arthur")
+        print(self.Arthur)
 
     def findVoice(self, voices, name):
         for voice in voices:
@@ -22,7 +22,7 @@ class TTS:
             voice = self.Arthur
         if language == "english":
             audio = generate(
-                text, voice=voice, model="eleven_monolingual_v1")
+                text)
             fileName = os.path.join('tts-audio-files', 'english.mp3')
         else:
             audio = generate(
